@@ -14,9 +14,9 @@ class IsAlive(discord.Client):
         game_details = f' - {playing.details}' if playing and playing.details else ''
 
         if not before.channel and after.channel:
-            notify(f'{name} entrou em {after.channel.name}{game_message}{game_details}')
+            notify(f'{name} entrou em [{after.channel.name}]({after.channel.jump_url}){game_message}{game_details}')
         elif not before.self_stream and after.self_stream:
-            notify(f'{name} está ao vivo em {after.channel.name}{game_message}{game_details}') 
+            notify(f'🔴 {name} está ao vivo em [{after.channel.name}]({after.channel.jump_url}) {game_message}{game_details}') 
 
     async def on_presence_update(self, before, after):
         before_playing = discord.utils.get(before.activities, type=discord.ActivityType.playing)
